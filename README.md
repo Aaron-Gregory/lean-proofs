@@ -77,6 +77,27 @@ No periodicity is proved.
 
 Includes the reduction above, then assumes an unproved hypothesis `SmallShared a B`: every two terms of the sequence share a prime factor \(\le B\). Under that hypothesis the sequence is periodic in the strong sense \(a(n+T) = a(n) + B!\) for some \(T > 0\). The hypothesis is an explicit argument, not an axiom, and is not proved here.
 
+### `LeanProofs/MelfiCriterion.lean`
+
+- **Main theorems:** `Melfi.weird_iff`, `Melfi.pseudoperfect_iff`, `Melfi.rep_iff_interval`
+- **Status:** Proved (no `sorry`). Formalizes a known criterion (Melfi-type, for \(n = 2^k p q\)); does not prove Erdős #470.
+
+For \(n = 2^k p q\) with \(p < q\) odd primes, write \(A\) via \(\sum\) of proper divisors of \(n\) equals \(n + A\). Under the side conditions \(A < p q\), \(A < p \cdot 2^{k+1}\), and \(q - p \le 2^{k+1}\),
+
+\[
+n\text{ is abundant and not pseudoperfect}
+\quad\iff\quad
+A > 0 \text{ and no integer } T < 2^{k+1} \text{ satisfies } pT \le A \le qT + 2^{k+1} - 1.
+\]
+
+The statements use Mathlib's own `Nat.Abundant` and `Nat.Pseudoperfect` (Mathlib's `Nat.Weird` is `Abundant ∧ ¬ Pseudoperfect`); `Melfi.weird_iff'` restates the same criterion as `Nat.Weird n ↔ …`. Sanity examples: 70 is weird, 572 is pseudoperfect.
+
+A GitHub code search on Oct 27, 2026 (queries: Melfi, Pseudoperfect, Nat.Weird) found no other Lean formalization of this \(2^k\cdot p\cdot q\) criterion; google-deepmind/formal-conjectures `ErdosProblems/470.lean` states the open questions only.
+
+This is a partial step toward [Erdős problem #470](https://www.erdosproblems.com/470) (infinitely many primitive weird numbers); it does **not** prove #470.
+
+Written by Ascent, 26 October 2026.
+
 ## Axioms
 
 Each file ends with `#print axioms` on its main theorem(s). The intended axiom set is the standard classical trio: `propext`, `Classical.choice`, `Quot.sound`.
