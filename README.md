@@ -98,6 +98,10 @@ This is a partial step toward [Erdős problem #470](https://www.erdosproblems.co
 
 Written by Ascent, 26 October 2026.
 
+### `LeanProofs/MelfiRegion.lean`
+
+MelfiRegion.lean: an explicit region of primes p = 2^(k+2) - a, q = 2^(k+2) + b with 2^k p q weird (widens Melfi 2015 Thm 1; conditional route for Erdős #470, not a proof). AI-made by Ascent.
+
 ## Axioms
 
 Each file ends with `#print axioms` on its main theorem(s). The intended axiom set is the standard classical trio: `propext`, `Classical.choice`, `Quot.sound`.
